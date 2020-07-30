@@ -15,4 +15,13 @@ namespace BestRestaurant.Models
     public string Name { get; set; }
     public virtual ICollection<Restaurant> Restaurants { get; set; } 
   }  
+
+  public enum CuisineList
+  {
+    Chinese = 1,
+    Japanese = 2,
+    Mexican = 3,
+    Italian = 4,
+    American = 5
+  }
 }
