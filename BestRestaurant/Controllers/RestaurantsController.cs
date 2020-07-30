@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using ToDoList.Models;
+using BestRestaurant.Models;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
@@ -44,7 +44,7 @@ namespace BestRestaurant.Controllers
 
     public ActionResult Edit(int id)
     {
-      var thisRestaurant = _db.Restaurants.FirstOrDefault(restaurants => restaurant.RestaurantId == id); 
+      var thisRestaurant = _db.Restaurants.FirstOrDefault(restaurants => restaurants.RestaurantId == id); 
       ViewBag.CuisineId = new SelectList(_db.Cuisines, "CuisineId", "Name");
 
       return View(thisRestaurant);
@@ -53,7 +53,7 @@ namespace BestRestaurant.Controllers
     [HttpPost]
     public ActionResult Edit(Restaurant restaurant)
     {
-      _db.Entry(Restaurant).State = EntityState.Modified;
+      _db.Entry(restaurant).State = EntityState.Modified;
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
